@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            border-radius: 100px;
+            background: gray;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="traffic_light"></div>
+
+</body>
+<script>
+        function secondsOfInterval(seconds) {
+            new Promise(function (resolve, reject) {
+                setTimeout(resolve, seconds * 1000);
+            })
+        }
+        function setColor(color) {
+            document.getElementById('traffic_light').style.background = color;
+        }
+        async function changeColorPerSeconds(color, seconds) {
+            setColor(color);
+            await secondsOfInterval(seconds);
+        }
+        async function displaySequence() {
+            await changeColorPerSeconds('green', 3);
+            await changeColorPerSeconds('yellow', 1);
+            await changeColorPerSeconds('red', 2);
+        }
+        async function main() {
+            await displaySequence();
+        }
+        main();
+    </script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script>
+		function sleep(duration){
+            return new Promise(function(resovle,reject){
+                setTimeout(resovle,duration);
+            })
+        }
+        async function foo(name){
+            await sleep(2000);
+            console.log(name);
+        }
+        async function fooInvoke(){
+            await foo("a");
+            await foo("b");
+        }
+        fooInvoke();
+	</script>
+	<body>
+	</body>
+</html>
